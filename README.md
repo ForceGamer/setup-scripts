@@ -12,3 +12,7 @@ It should work for forks of said distros (like manjaro=arch etc.)
 ```
 sudo ./<distro>-setup.sh
 ```
+# TODO:
+- Fedora Script
+- Ubuntu/PopOS script
+- .desktop file for Jetbrains toolbox
