@@ -75,7 +75,6 @@ pacman -S --needed \
 yay -S --needed \
     ttf-font-awesome \
     noto-fonts \
-    fonts-material-design-icons-iconfont \
     ttf-material-design-icons \
     -y
 
