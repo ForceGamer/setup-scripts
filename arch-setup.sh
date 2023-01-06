@@ -1,31 +1,34 @@
 #!/bin/bash
 
 # Prerequisites
-#pacman -S --needed \
-#    curl \
-#    wget \
-#    git \
-#-y
+pacman -S --needed \
+    curl \
+    wget \
+    git \
+    -y
+
+# YAY Setup
+git clone https://aur.archlinux.org/yay.git
+(cd ./yay && makepkg -si)
 
 # Flatpak installation
-# pacman -S --needed flatpak -y
-# pacman -S --needed gnome-software-plugin-flatpak -y
-# flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+pacman -S --needed flatpak -y
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Internet
 pacman -S --needed \
     firefox \
     discord \
     qbittorrent \
--y
+    -y
 
 # Creative
 pacman -S --needed \
     blender \
     gimp \
     krita \
--y
-flatpak install flathub com.obsproject.Studio -y
+    obs-studio \
+    -y
 
 # Gaming
 pacman -S --needed \
@@ -33,7 +36,7 @@ pacman -S --needed \
     gamemode \
     lutris \
     wine-staging \
--y
+    -y
 flatpak install flathub org.prismlauncher.PrismLauncher -y
 
 # Misc
@@ -42,8 +45,10 @@ pacman -S --needed \
     neofetch \
     code \
     neovim \
--y
-curl -fsSL https://raw.githubusercontent.com/nagygergo/jetbrains-toolbox-install/master/jetbrains-toolbox.sh | bash
+    -y
+curl -fsSL \
+    https://raw.githubusercontent.com/nagygergo/jetbrains-toolbox-install/master/jetbrains-toolbox.sh \
+    | bash
 
 
 # Zen Kernel
@@ -51,7 +56,7 @@ pacman -S --needed \
     linux-zen \
     linux-zen-headers \
     nvidia-dkms \
--y 
+    -y 
 
 # Window Manager tools
 pacman -S --needed \
@@ -59,7 +64,24 @@ pacman -S --needed \
     sxhkd \
     polybar \
     dunst \
+    feh \
     rofi \
-    kde-spectacle \
+    thunar \
+    spectacle \
     picom \
--y
+    -y
+
+# Fonts (Material Design icons are not in the main Repos, so we use YAY)
+yay -S --needed \
+    ttf-font-awesome \
+    noto-fonts \
+    fonts-material-design-icons-iconfont \
+    ttf-material-design-icons \
+    -y
+
+echo -e "\nSETTING UP CONFIGS\n"
+
+# Config setup
+./config-setup.sh
+
+echo -e "\nSETUP COMPLETE\n"

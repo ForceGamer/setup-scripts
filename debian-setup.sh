@@ -70,14 +70,14 @@ apt install \
     thunar \
     kde-spectacle \
     picom \
--y
+    -y
 
 # Fonts
 apt install \
     fonts-font-awesome \
     fonts-noto \
     fonts-material-design-icons-iconfont \
--y
+    -y
 
 # XanMod Kernel
 echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list
@@ -85,6 +85,11 @@ wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key --keyring /etc/apt/trust
 apt update && \
     apt install \
         linux-xanmod-x64v3 \
-    -y
+        -y
 
-echo "\e[32Setup complete!\e[0m"
+echo -e "\nSETTING UP CONFIGS\n"
+
+# Config setup
+./config-setup.sh
+
+echo -e "\nSETUP COMPLETE\n"
